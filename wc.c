@@ -16,7 +16,7 @@ char *get_input(int *num_chars, int *num_lines, int *num_words, bool is_lines, b
 
     while (fgets(buffer, INPUT_BUF, stdin) != NULL) {
         if (is_lines == true && is_word == false) {
-            for (int i = 0; i < strlen(buffer); i++) {
+            for (size_t i = 0; i < strlen(buffer); i++) {
                 if (errno == EINTR) { // Check for Ctrl+C
                     break;
                 }
@@ -25,7 +25,7 @@ char *get_input(int *num_chars, int *num_lines, int *num_words, bool is_lines, b
                 }
             }
         } else if (is_lines == false && is_word == false) {
-            for (int i = 0; i < strlen(buffer); i++) {
+            for (size_t i = 0; i < strlen(buffer); i++) {
                 if (errno == EINTR) { // Check for Ctrl+C
                     break;
                 }
@@ -33,7 +33,7 @@ char *get_input(int *num_chars, int *num_lines, int *num_words, bool is_lines, b
                 *num_chars += 1;
             }
         } else if (is_word == true && is_lines == false) {
-            for (int i = 0; i < strlen(buffer); i++) {
+            for (size_t i = 0; i < strlen(buffer); i++) {
                 if (errno == EINTR) { // Check for Ctrl+C
                     break;
                 }
